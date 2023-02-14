@@ -3,7 +3,9 @@ const PORT = process.env.PORT || 8081;
 
 const server = http.createServer(async (req, res)=> {
   const url = require("url");
+  const qs = require("querystring");
   let urlObj = url.parse(req.url);
+  let query = qs.parse(urlObj.query);
   // const https = require('https');
   // const URL = require('url');
   // const UserAgents = [
@@ -72,7 +74,7 @@ const server = http.createServer(async (req, res)=> {
   // let result = await Promise.all(promises);
 
   res.writeHead(200, {'Content-Type':'text/plain'});
-  res.write(JSON.stringify(urlObj));
+  res.write(JSON.stringify(query));
   res.end();
 });
 
