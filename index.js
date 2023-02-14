@@ -73,7 +73,7 @@ const server = http.createServer(async (req, res)=> {
   let result = await Promise.all(promises);
 
   res.writeHead(200, {'Content-Type':'text/plain'});
-  res.write(JSON.stringify(query));
+  res.write(JSON.stringify({result}));
   res.end();
 });
 
