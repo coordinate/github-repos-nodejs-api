@@ -3,6 +3,9 @@ const PORT = process.env.PORT || 8081;
 
 const server = http.createServer(async (req, res)=> {
   const https = require('https');
+  const qs = require("querystring");
+  const URL = require('url');
+
   const UserAgents = [
     'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:76.0) Gecko/20100101 Firefox/76.0',
     'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.143 Safari/537.36',
@@ -57,7 +60,6 @@ const server = http.createServer(async (req, res)=> {
         .on('error', reject);
     });
   };
-  const qs = require("querystring");
   let urlObj = URL.parse(req.url);
   let p = qs.parse(urlObj.query);
   let promises = [];
