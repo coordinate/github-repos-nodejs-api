@@ -63,12 +63,12 @@ const server = http.createServer(async (req, res)=> {
   let urlObj = URL.parse(req.url);
   let p = qs.parse(urlObj.query);
   let promises = [];
-  let xys = p.xys.split('.');
+  let xys = p['xys'].split('.');
   let l = xys.length;
   for (let i = 0; i < l; i = i + 2) {
     let x = xys[i];
     let y = xys[i + 1];
-    promises.push(getFile(p.v, x, y, p.z, p.s));
+    promises.push(getFile(p['v'], x, y, p['z'], p['s']));
   }
   let result = await Promise.all(promises);
 
